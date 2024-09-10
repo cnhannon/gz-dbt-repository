@@ -8,17 +8,29 @@ sources:
       - name: sales
         identifier: raw_gz_sales
         description: sales table where orders_id is the pk (unconfirmed)
+        loaded_at_field: "CAST(date_date AS TIMESTAMP)"
+        freshness:
+          warn_after:
+            period: day
+            count: 90
         columns:
           - name: date_date
             description: date of purchase
           - name: orders_id
             description: the unique identifier for the each order
+            tests:
+              - not_null
           - name: pdt_id
             description: the product identifier for the product ordered
+            tests:
+              - not_null
           - name: revenue
             description: the revenue from the sale
           - name: quantity
             description: the quantity of products ordered
+        tests:
+          - unique:
+              column_name: "(orders_id || '-' || pdt_id)"
       - name: product
         identifier: raw_gz_product
         description: product table where products_id is the pk (unconfirmed)
