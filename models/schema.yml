@@ -7,7 +7,37 @@ sources:
     tables:
       - name: sales
         identifier: raw_gz_sales
+        description: sales table where orders_id is the pk (unconfirmed)
+        columns:
+          - name: date_date
+            description: date of purchase
+          - name: orders_id
+            description: the unique identifier for the each order
+          - name: pdt_id
+            description: the product identifier for the product ordered
+          - name: revenue
+            description: the revenue from the sale
+          - name: quantity
+            description: the quantity of products ordered
       - name: product
         identifier: raw_gz_product
+        description: product table where products_id is the pk (unconfirmed)
+        columns:
+          - name: products_id
+            description: unique identifier for products table
+          - name: purchSE_PRICE
+            description: the price of each product
       - name: ship
         identifier: raw_gz_ship
+        description: ship table where the pk is seemingly a compound key (unconfirmed)
+        columns:
+          - name: orders_id
+            description: he unique identifier for the each order
+          - name: shipping_fee
+            description: the customer cost of shipping
+          - name: shipping_fee_1
+            description: duplicate of shipping_fee
+          - name: logCost
+            description: the logistical cost??
+          - name: ship_cost
+            description: the company cost of shipping
