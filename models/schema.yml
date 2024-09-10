@@ -25,6 +25,9 @@ sources:
         columns:
           - name: products_id
             description: unique identifier for products table
+            tests:
+              - not_null
+              - unique
           - name: purchSE_PRICE
             description: the price of each product
       - name: ship
@@ -33,6 +36,9 @@ sources:
         columns:
           - name: orders_id
             description: he unique identifier for the each order
+            tests:
+              - not_null
+              - unique
           - name: shipping_fee
             description: the customer cost of shipping
           - name: shipping_fee_1
